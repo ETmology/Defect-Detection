@@ -1,0 +1,4 @@
+train: NEU_DET_data/train
+val: NEU_DET_data/test
+nc: 6 # 标签数量
+names: ['crazing', 'inclusion', 'patches', 'pitted_surface', 'rolled-in_scale', 'scratches'] # 标签名称
