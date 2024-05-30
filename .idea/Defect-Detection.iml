@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/NEU-DET" />
+      <excludeFolder url="file://$MODULE_DIR$/datasets" />
       <excludeFolder url="file://$MODULE_DIR$/ultralytics-main/docs/en/datasets" />
       <excludeFolder url="file://$MODULE_DIR$/ultralytics-main/tests" />
       <excludeFolder url="file://$MODULE_DIR$/ultralytics-main/ultralytics/assets" />
