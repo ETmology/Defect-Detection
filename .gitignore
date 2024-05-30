@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 /NEU-DET/
 /datasets/
-!/draw_xml_boxes/
+/draw_xml_boxes/
