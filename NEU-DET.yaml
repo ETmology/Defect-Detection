@@ -1,0 +1,5 @@
+train: train  # labels要和图片在相同目录
+val: val
+test: test
+nc: 6  # 类别数
+names: ['crazing', 'inclusion', 'patches', 'pitted_surface', 'rolled-in_scale', 'scratches']  # 类别名称列表
