@@ -20,3 +20,4 @@
 ### Ref
 
 - [YOLOv8实现缺陷目标检测（附代码、数据集、教学视频）](https://zhuanlan.zhihu.com/p/666040746)
+- [Ultralytics YOLO Docs](https://docs.ultralytics.com/modes/)
