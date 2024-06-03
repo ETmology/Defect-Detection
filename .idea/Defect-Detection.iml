@@ -11,6 +11,7 @@
       <excludeFolder url="file://$MODULE_DIR$/ultralytics-main/ultralytics/assets" />
       <excludeFolder url="file://$MODULE_DIR$/ultralytics-main/ultralytics/cfg/datasets" />
       <excludeFolder url="file://$MODULE_DIR$/draw_xml_boxes" />
+      <excludeFolder url="file://$MODULE_DIR$/pre_models" />
     </content>
     <orderEntry type="jdk" jdkName="yolov8" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

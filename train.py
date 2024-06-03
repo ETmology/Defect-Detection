@@ -6,7 +6,7 @@ from ultralytics import YOLO
 os.environ["COMET_MODE"] = "offline"
 
 # 设置项目名称
-projectName = 'Defect-Detection'
+projectName = 'Defect-Detection-exp'
 
 
 # 定义训练参数
@@ -15,7 +15,7 @@ def train_model():
     comet_ml.init(project_name=projectName)
 
     # 加载模型
-    model = YOLO('yolov8n.yaml').load('yolov8n.pt')
+    model = YOLO('yolov8n.yaml').load('pre_models/yolov8n.pt')
 
     # 训练模型
     model.train(
