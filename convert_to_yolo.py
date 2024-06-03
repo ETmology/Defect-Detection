@@ -59,9 +59,9 @@ for filename in os.listdir(train_annotations_dir):
         convert_annotation(xml_path, image_path, label_path)
 
 # 转换test数据集
-test_annotations_dir = os.path.join(annotations_dir, 'test')
-test_images_dir = os.path.join(images_dir, 'test')
-test_labels_dir = os.path.join(labels_dir, 'test')
+test_annotations_dir = os.path.join(annotations_dir, 'test.py')
+test_images_dir = os.path.join(images_dir, 'test.py')
+test_labels_dir = os.path.join(labels_dir, 'test.py')
 os.makedirs(test_labels_dir, exist_ok=True)
 
 for filename in os.listdir(test_annotations_dir):

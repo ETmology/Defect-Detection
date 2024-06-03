@@ -8,13 +8,13 @@ xml_base_dir = 'NEU-DET/annotations/'
 
 # 初始化一个字典来存储类别及其出现次数
 class_counts = {
-    'test': defaultdict(int),
+    'test.py': defaultdict(int),
     'train': defaultdict(int),
     'val': defaultdict(int)
 }
 
 # 遍历test、train和val文件夹
-for folder_name in ['test', 'train', 'val']:
+for folder_name in ['test.py', 'train', 'val']:
     # 定义当前文件夹的路径
     xml_dir = os.path.join(xml_base_dir, folder_name)
 

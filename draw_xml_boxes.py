@@ -42,4 +42,4 @@ def draw_bounding_box(image_folder, annotation_folder, output_folder):
 # 绘制边界框并保存图片
 draw_bounding_box('NEU-DET/images/train', 'NEU-DET/annotations/train', 'draw_xml_boxes/train')
 draw_bounding_box('NEU-DET/images/val', 'NEU-DET/annotations/val', 'draw_xml_boxes/val')
-draw_bounding_box('NEU-DET/images/test', 'NEU-DET/annotations/test', 'draw_xml_boxes/test')
+draw_bounding_box('NEU-DET/images/test.py', 'NEU-DET/annotations/test.py', 'draw_xml_boxes/test.py')

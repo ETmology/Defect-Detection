@@ -1,4 +1,4 @@
-train: train  # labels要和图片在相同目录
+train: train
 val: val
 test: test
 nc: 6  # 类别数
