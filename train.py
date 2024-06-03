@@ -1,15 +1,35 @@
+import os
+import comet_ml
 from ultralytics import YOLO
 
-# 加载模型
-model = YOLO('yolov8n.yaml').load('yolov8n.pt')
+# 设置Comet API Key
+os.environ['COMET_API_KEY'] = 'YnYyHOYRurdu1KdGoAetHJxl4'
 
-# 训练模型
+# 设置项目名称
+projectName = 'Defect-Detection'
+
+
+def train_model():
+    # 初始化Comet项目
+    comet_ml.init(project_name=projectName)
+
+    # 加载模型
+    model = YOLO('yolov8n.yaml').load('yolov8n.pt')
+
+    # 训练模型
+    results = model.train(
+        data='NEU-DET.yaml',  # 数据集的yaml文件
+        project=projectName,
+        batch=32,
+        save_period=1,
+        save_json=True,
+        epochs=3,  # 训练轮数
+        imgsz=200,  # 输入图像尺寸
+        device='0'  # 使用的GPU设备编号
+    )
+
+
 if __name__ == '__main__':
-    # 指定训练数据集的路径和其他参数
-    data = 'NEU-DET.yaml'  # 数据集的yaml文件
-    epochs = 200  # 训练轮数
-    imgsz = 200  # 输入图像尺寸
-    device = '0'  # 使用的GPU设备编号
+    train_model()
 
-    # 开始训练
-    model.train(data=data, epochs=epochs, imgsz=imgsz, device=device)
+exit()
