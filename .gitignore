@@ -161,3 +161,4 @@ cython_debug/
 /NEU-DET/
 /datasets/
 /draw_xml_boxes/
+/pre_model/
