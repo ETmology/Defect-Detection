@@ -10,6 +10,8 @@
 
 # 实验记录
 
+## 训练
+
 > [!note]
 >
 > 此处只写简要记录，具体见`Defect-Detection-exp`中的输出及comet的logging。
@@ -19,7 +21,9 @@
 | [agricultural_detail_6034](Defect-Detection-exp\agricultural_detail_6034) | 6/4/24 11:19 AM | train | 0.767 | 3012018    | 采用原始`yolov8n.pt`及原始超参数。                           |
 | [labour_jail_7888](Defect-Detection-exp\labour_jail_7888)    | 6/4/24 03:37 PM | train | 0.747 | 11137922   | 采用原始`yolov8s.pt`及原始超参数，可以看出其参数量更多，运行时GPU内存翻倍，但是mAP50的并没有得到提升。 |
 
+## 超参数调优
 
+## 测试
 
 # 项目文件说明
 

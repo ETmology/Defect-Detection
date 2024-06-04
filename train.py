@@ -28,13 +28,29 @@ def train_model():
         epochs=200,  # 训练轮数
         imgsz=640,  # 输入图像尺寸
 
-        lr0=0.01,  # 初始学习率
-        lrf=0.01,  # 最终学习率
-        momentum=0.937,  # 动量
-        weight_decay=0.0005,  # 权重衰减
-        warmup_epochs=3,  # 初始warmup轮数
-        warmup_momentum=0.8,  # 初始warmup动量
-        warmup_bias_lr=0.1,  # 初始warmup偏置学习率
+        lr0=0.00651,
+        lrf=0.00896,
+        momentum=0.88183,
+        weight_decay=0.00051,
+        warmup_epochs=3.41933,
+        warmup_momentum=0.71674,
+        box=6.3139,
+        cls=0.41714,
+        dfl=1.66416,
+        hsv_h=0.02157,
+        hsv_s=0.49884,
+        hsv_v=0.35053,
+        degrees=0.0,
+        translate=0.08529,
+        scale=0.46097,
+        shear=0.0,
+        perspective=0.0,
+        flipud=0.0,
+        fliplr=0.42133,
+        bgr=0.0,
+        mosaic=0.97803,
+        mixup=0.0,
+        copy_paste=0.0
     )
 
 
