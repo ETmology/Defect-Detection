@@ -15,7 +15,7 @@ def train_model():
     comet_ml.init(project_name=projectName)
 
     # 加载模型
-    model = YOLO('yolov8n.yaml').load('pre_models/yolov8n.pt')
+    model = YOLO('yolov8s.yaml').load('pre_models/yolov8s.pt')
 
     # 训练模型
     model.train(
