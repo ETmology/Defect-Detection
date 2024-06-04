@@ -28,6 +28,7 @@ def train_model():
         epochs=200,  # 训练轮数
         imgsz=640,  # 输入图像尺寸
 
+        # 进行调优后的超参数
         lr0=0.00651,
         lrf=0.00896,
         momentum=0.88183,
