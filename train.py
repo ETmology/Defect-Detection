@@ -22,7 +22,6 @@ def train_model():
         data='NEU-DET.yaml',  # 数据集的yaml文件
         project=projectName,
         device='0',  # 使用的GPU设备编号
-
         save_json=True,  # 是否保存JSON格式的结果
 
         batch=16,  # 批量大小
@@ -37,7 +36,6 @@ def train_model():
         warmup_momentum=0.8,  # 初始warmup动量
         warmup_bias_lr=0.1,  # 初始warmup偏置学习率
     )
-
 
 if __name__ == '__main__':
     train_model()
