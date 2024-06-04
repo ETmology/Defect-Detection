@@ -19,9 +19,14 @@
 | Name[^2]                                                     | endTime         | Type  | mAP50 | Parameters | Note                                                         |
 | ------------------------------------------------------------ | --------------- | ----- | ----- | ---------- | ------------------------------------------------------------ |
 | [agricultural_detail_6034](Defect-Detection-exp\agricultural_detail_6034) | 6/4/24 11:19 AM | train | 0.767 | 3012018    | 采用原始`yolov8n.pt`及原始超参数。                           |
-| [labour_jail_7888](Defect-Detection-exp\labour_jail_7888)    | 6/4/24 03:37 PM | train | 0.747 | 11137922   | 采用原始`yolov8s.pt`及原始超参数，可以看出其参数量更多，运行时GPU内存翻倍，但是mAP50的并没有得到提升。 |
+| [labour_jail_7888](Defect-Detection-exp\labour_jail_7888)    | 6/4/24 03:37 PM | train | 0.747 | 11137922   | 采用原始`yolov8s.pt`及原始超参数，可以看出其参数量更多，耗时长，占用GPU内存翻倍，但是mAP50的并没有得到提升。 |
+| [previous_continent_814](Defect-Detection-exp\previous_continent_814) | 6/4/24 09:38 PM | train | 0.776 | 3012018    | 原始`yolov8n.pt`的基础上采用 [tune1](runs\tune1) 的超参数调优结果，可以看出mAP50获得了一定的提升。 |
 
 ## 超参数调优
+
+| Name                | endTime         | Type | Note                                                       |
+| ------------------- | --------------- | ---- | ---------------------------------------------------------- |
+| [tune1](runs\tune1) | 6/4/24 09:00 PM | tune | 对原始`yolov8n.pt`超参数进行调优，epoch=30，实际迭代39轮。 |
 
 ## 测试
 
@@ -137,9 +142,8 @@
   - [x] 计算机视觉项目的步骤：[Steps of a Computer Vision Project - Ultralytics YOLO Docs](https://docs.ultralytics.com/guides/steps-of-a-cv-project/)
   - [x] 性能指标：[YOLO Performance Metrics - Ultralytics YOLO Docs](https://docs.ultralytics.com/guides/yolo-performance-metrics/)
   - [x] 超参数调整：[Hyperparameter Tuning - Ultralytics YOLO Docs](https://docs.ultralytics.com/guides/hyperparameter-tuning/)
-- [ ] 分析`train`结果
 - [x] 试验s、m、l、x型号的模型（在s上默认效果不太好，m、l、x模型较庞大，暂时放弃）
-- [ ] 调整n型的超参数
+- [x] 调整n型的超参数
 
 # 参考
 
