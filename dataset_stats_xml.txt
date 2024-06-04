@@ -21,4 +21,3 @@ patches: 117
 pitted_surface: 62
 rolled-in_scale: 129
 scratches: 95
-

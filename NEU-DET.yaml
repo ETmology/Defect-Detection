@@ -1,5 +1,5 @@
-train: train
-val: val
-test: test
+train: random_split_20/train
+val: random_split_20/val
+test: random_split_20/test
 nc: 6  # 类别数
 names: ['crazing', 'inclusion', 'patches', 'pitted_surface', 'rolled-in_scale', 'scratches']  # 类别名称列表

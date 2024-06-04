@@ -26,7 +26,7 @@ def train_model():
         save_json=True,  # 是否保存JSON格式的结果
 
         batch=16,  # 批量大小
-        epochs=2,  # 训练轮数
+        epochs=200,  # 训练轮数
         imgsz=640,  # 输入图像尺寸
 
         lr0=0.01,  # 初始学习率
