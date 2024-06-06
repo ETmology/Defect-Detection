@@ -20,28 +20,28 @@
 
 | endTime         | resultPath[^2]                                               | Type  | mAP50 | Parameters | 参数说明                                                     | 备注                                                         |
 | --------------- | ------------------------------------------------------------ | ----- | ----- | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 6/4/24 11:19 AM | [agricultural_detail_6034](Defect-Detection-exp\agricultural_detail_6034) | train | 0.767 | 3012018    | 采用原始`yolov8n.pt`及原始超参数。                           | -                                                            |
-| 6/4/24 03:37 PM | [labour_jail_7888](Defect-Detection-exp\labour_jail_7888)    | train | 0.747 | 11137922   | 采用原始`yolov8s.pt`及原始超参数。                           | 其参数量更多，耗时长，占用GPU内存翻倍（2g->4g），但是mAP50的并没有得到提升。 |
-| 6/4/24 09:38 PM | [previous_continent_814](Defect-Detection-exp\previous_continent_814) | train | 0.776 | 3012018    | 原始`yolov8n.pt`的基础上采用 [tune1](runs\tune1) 的超参数调优结果。 | mAP50获得了一定的提升，较[agricultural_detail_6034](Defect-Detection-exp\agricultural_detail_6034)增长了0.009，但存在轻微的过拟合问题。 |
-| 6/6/24 07:22 AM | [fashionable_canid_8968](Defect-Detection-exp\fashionable_canid_8968) | train | 0.769 | 3012018    | [tune2](runs\tune2)调优过程得到的最佳权重 [best.pt](runs\tune2\tune\weights\best.pt) 和最佳超参数组合 [best_hyperparameters.yaml](runs\tune2\tune\best_hyperparameters.yaml) 上继续训练。 | 在第114个Epoch时触发了early stopping，mAP50未提高，loss的收敛情况变差，存在过拟合问题。 |
-| 6/6/24 08:30 AM | [furious_laminate_1194](Defect-Detection-exp\furious_laminate_1194) | train | 0.774 | 3012018    | [tune2](runs\tune2)调优过程得到的最佳超参数组合 [best_hyperparameters.yaml](runs\tune2\tune\best_hyperparameters.yaml) 和[previous_continent_814](Defect-Detection-exp\previous_continent_814)得到的最佳权重 [best.pt](Defect-Detection-exp\previous_continent_814\weights\best.pt) 上继续训练。 | 相当于运用“早停法”，仍然存在过拟合问题。                     |
-| 6/6/24 09:09 AM | [chosen_ayu_1187](Defect-Detection-exp\chosen_ayu_1187)      | train | 0.782 | 3012018    | [previous_continent_814](Defect-Detection-exp\previous_continent_814)的基础上epoch减小至100。 | 过拟合问题得到缓解，训练时长缩短，模型也回到更加轻量的水平。 |
-| 6/6/24 09:39 AM | [actual_chili_3963](Defect-Detection-exp\actual_chili_3963)  | train | 0.785 | 3012018    | [chosen_ayu_1187](Defect-Detection-exp\chosen_ayu_1187) 的基础上batch增大至24。 | 出现略微过拟合。                                             |
-| 6/6/24 01:08 PM | [northern_blackcurrant_9597](Defect-Detection-exp\northern_blackcurrant_9597) | train | 0.785 | 3012018    | 采用[tune3](runs\tune3)得到的 [best_hyperparameters.yaml](runs\tune3\tune\best_hyperparameters.yaml) 对原始`yolov8n.pt`训练100个epoch。 | 略微过拟合，波动幅度仍然较大。                               |
+| 6/4/24 11:19 AM | [agricultural_detail_6034](Defect-Detection-exp/agricultural_detail_6034) | train | 0.767 | 3012018    | 采用原始`yolov8n.pt`及原始超参数。                           | -                                                            |
+| 6/4/24 03:37 PM | [labour_jail_7888](Defect-Detection-exp/labour_jail_7888)    | train | 0.747 | 11137922   | 采用原始`yolov8s.pt`及原始超参数。                           | 其参数量更多，耗时长，占用GPU内存翻倍（2g->4g），但是mAP50的并没有得到提升。 |
+| 6/4/24 09:38 PM | [previous_continent_814](Defect-Detection-exp/previous_continent_814) | train | 0.776 | 3012018    | 原始`yolov8n.pt`的基础上采用 [tune1](runs/tune1) 的超参数调优结果。 | mAP50获得了一定的提升，较[agricultural_detail_6034](Defect-Detection-exp/agricultural_detail_6034)增长了0.009，但存在轻微的过拟合问题。 |
+| 6/6/24 07:22 AM | [fashionable_canid_8968](Defect-Detection-exp/fashionable_canid_8968) | train | 0.769 | 3012018    | [tune2](runs/tune2)调优过程得到的最佳权重 [best.pt](runs/tune2/tune/weights/best.pt) 和最佳超参数组合 [best_hyperparameters.yaml](runs/tune2/tune/best_hyperparameters.yaml) 上继续训练。 | 在第114个Epoch时触发了early stopping，mAP50未提高，loss的收敛情况变差，存在过拟合问题。 |
+| 6/6/24 08:30 AM | [furious_laminate_1194](Defect-Detection-exp/furious_laminate_1194) | train | 0.774 | 3012018    | [tune2](runs/tune2)调优过程得到的最佳超参数组合 [best_hyperparameters.yaml](runs/tune2/tune/best_hyperparameters.yaml) 和[previous_continent_814](Defect-Detection-exp/previous_continent_814)得到的最佳权重 [best.pt](Defect-Detection-exp/previous_continent_814/weights/best.pt) 上继续训练。 | 相当于运用“早停法”，仍然存在过拟合问题。                     |
+| 6/6/24 09:09 AM | [chosen_ayu_1187](Defect-Detection-exp/chosen_ayu_1187)      | train | 0.782 | 3012018    | [previous_continent_814](Defect-Detection-exp/previous_continent_814)的基础上epoch减小至100。 | 过拟合问题得到缓解，训练时长缩短，模型也回到更加轻量的水平。 |
+| 6/6/24 09:39 AM | [actual_chili_3963](Defect-Detection-exp/actual_chili_3963)  | train | 0.785 | 3012018    | [chosen_ayu_1187](Defect-Detection-exp/chosen_ayu_1187) 的基础上batch增大至24。 | 出现略微过拟合。                                             |
+| 6/6/24 01:08 PM | [northern_blackcurrant_9597](Defect-Detection-exp/northern_blackcurrant_9597) | train | 0.785 | 3012018    | 采用[tune3](runs/tune3)得到的 [best_hyperparameters.yaml](runs/tune3/tune/best_hyperparameters.yaml) 对原始`yolov8n.pt`训练100个epoch。 | 略微过拟合，波动幅度仍然较大。                               |
 
 ## 测试
 
 | endTime         | resultPath        | Type | mAP50 | 参数说明                                                     | 备注                                          |
 | --------------- | ----------------- | ---- | ----- | ------------------------------------------------------------ | --------------------------------------------- |
-| 6/6/24 01:16 PM | [val1](runs\val1) | val  | 0.7   | 用测试集对[northern_blackcurrant_9597](Defect-Detection-exp\northern_blackcurrant_9597) 中得到的最佳权重模型 [best.pt](Defect-Detection-exp\northern_blackcurrant_9597\weights\best.pt) 进行测试[^3]。 | 在测试集上的表现并不好…mAP50从0.785降到了0.7😅 |
+| 6/6/24 01:16 PM | [val1](runs/val1) | val  | 0.7   | 用测试集对[northern_blackcurrant_9597](Defect-Detection-exp/northern_blackcurrant_9597) 中得到的最佳权重模型 [best.pt](Defect-Detection-exp/northern_blackcurrant_9597/weights/best.pt) 进行测试[^3]。 | 在测试集上的表现并不好…mAP50从0.785降到了0.7😅 |
 
 ## 超参数调优
 
 | endTime         | resultPath          | Type | 备注                                                         |
 | --------------- | ------------------- | ---- | ------------------------------------------------------------ |
-| 6/4/24 08:41 PM | [tune1](runs\tune1) | tune | 对原始`yolov8n.pt`超参数进行调优，`epoch=30`，实际迭代39轮。 |
-| 6/6/24 03:34 AM | [tune2](runs\tune2) | tune | 在[previous_continent_814](Defect-Detection-exp\previous_continent_814)训练完成后得到的 [best.pt](Defect-Detection-exp\previous_continent_814\weights\best.pt) 上进行进一步调优，`epoch=100`[^4]，`iteration=30`。 |
-| 6/6/24 12:34 AM | [tune3](runs\tune3) | tune | 对[chosen_ayu_1187](Defect-Detection-exp\chosen_ayu_1187) 的最佳权重 [best.pt](Defect-Detection-exp\chosen_ayu_1187\weights\best.pt) 超参数进行进一步调优，`epoch=30`，实际迭代25轮，以减小损失函数的波动。 |
+| 6/4/24 08:41 PM | [tune1](runs/tune1) | tune | 对原始`yolov8n.pt`超参数进行调优，`epoch=30`，实际迭代39轮。 |
+| 6/6/24 03:34 AM | [tune2](runs/tune2) | tune | 在[previous_continent_814](Defect-Detection-exp/previous_continent_814)训练完成后得到的 [best.pt](Defect-Detection-exp/previous_continent_814/weights/best.pt) 上进行进一步调优，`epoch=100`[^4]，`iteration=30`。 |
+| 6/6/24 12:34 AM | [tune3](runs/tune3) | tune | 对[chosen_ayu_1187](Defect-Detection-exp/chosen_ayu_1187) 的最佳权重 [best.pt](Defect-Detection-exp/chosen_ayu_1187/weights/best.pt) 超参数进行进一步调优，`epoch=30`，实际迭代25轮，以减小损失函数的波动。 |
 
 # 数据集及其处理
 
@@ -72,11 +72,11 @@ NEU-DET数据库包含了大量的灰度图像数据，其中每种缺陷类型�
 
 | 文件                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [check_device.py](data_processing\check_device.py)           | 检查设备用                                                   |
-| [convert_to_yolo.py](data_processing\convert_to_yolo.py)     | 转换数据集格式                                               |
-| [random_split.py](data_processing\random_split.py)           | 对1500张训练集随机分割成1200张训练集+300张验证集             |
-| [draw_xml_boxes.py](data_processing\draw_xml_boxes.py)       | 根据原始xml文件绘制检测框进行预览，结果在 [draw_xml_boxes](draw_xml_boxes) （没什么用） |
-| [view_category_xml.py](data_processing\view_category_xml.py) | 预览xml中包含的类别数量信息（没什么用）                      |
+| [check_device.py](data_processing/check_device.py)           | 检查设备用                                                   |
+| [convert_to_yolo.py](data_processing/convert_to_yolo.py)     | 转换数据集格式                                               |
+| [random_split.py](data_processing/random_split.py)           | 对1500张训练集随机分割成1200张训练集+300张验证集             |
+| [draw_xml_boxes.py](data_processing/draw_xml_boxes.py)       | 根据原始xml文件绘制检测框进行预览，结果在 [draw_xml_boxes](draw_xml_boxes) （没什么用） |
+| [view_category_xml.py](data_processing/view_category_xml.py) | 预览xml中包含的类别数量信息（没什么用）                      |
 
 # 相关文档
 
@@ -228,7 +228,7 @@ yolov8提供的数据增强策略包括以下选项（参照[#augmentation-setti
 
 # 一些问题
 
-## 调优过程 [tune2](runs\tune2) 中得到的超参数组合在[fashionable_canid_8968](Defect-Detection-exp\fashionable_canid_8968) 效果不佳？
+## 调优过程 [tune2](runs/tune2) 中得到的超参数组合在[fashionable_canid_8968](Defect-Detection-exp/fashionable_canid_8968) 效果不佳？
 
 ![过拟合与剧烈波动](./Defect-Detection-exp/fashionable_canid_8968/过拟合与剧烈波动.png)
 
@@ -293,6 +293,6 @@ yolov8提供的数据增强策略包括以下选项（参照[#augmentation-setti
 [^1]: 实验记录平台
 [^2]: 这些奇怪的名称是comet随机生成的🧐
 [^3]: 实际上是调用`model.val()`，分割出测试集合`test`即可用测试集中的数据进行验证
-[^4]: 据观测，[previous_continent_814](Defect-Detection-exp\previous_continent_814)的mAP50在100epoch差不多达到收敛值（好像不应该参照这个？
-[^5]: 此处类别编号顺序和[convert_to_yolo.py](data_processing\convert_to_yolo.py)、[NEU-DET.yaml](NEU-DET.yaml)中的对应
+[^4]: 据观测，[previous_continent_814](Defect-Detection-exp/previous_continent_814)的mAP50在100epoch差不多达到收敛值（好像不应该参照这个？
+[^5]: 此处类别编号顺序和[convert_to_yolo.py](data_processing/convert_to_yolo.py)、[NEU-DET.yaml](NEU-DET.yaml)中的对应
 [^6]: 精度（Precision）、召回率（Recall）和mAP指标（mAP50和mAP50-95），其中“Box”表示目标检测中的边界框
