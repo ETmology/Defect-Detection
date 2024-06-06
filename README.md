@@ -8,7 +8,7 @@
 
 > [!note]
 >
-> Comet设置成离线模式时，每次train结束后，先在终端设置API `set COMET_API_KEY=YnYyHOYRurdu1KdGoAetHJxl4`，再按照提示上传本地`.cometml-runs`中的文件即可。**此实验记录已设置为==公开==，在[此处](https://www.comet.com/etmology/defect-detection-exp/view/new/panels)可查看。**
+> Comet设置成离线模式时，每次train结束后，先在终端设置API `set COMET_API_KEY=YnYyHOYRurdu1KdGoAetHJxl4`，再按照提示上传本地`.cometml-runs`中的文件即可。**此实验记录已设置为==公开==，在[此处](https://www.comet.com/etmology/defect-detection-exp/view/new/panels)可查看实验参数、指标、输出、设备信息等。**
 
 # 实验记录
 
