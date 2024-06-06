@@ -52,13 +52,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\Defect-Detection-exp\train\results.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="\runs\tune1\train10\results.csv">
           <value>
             <Attribute>

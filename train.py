@@ -4,7 +4,7 @@ from ultralytics import YOLO
 import yaml
 
 # os.environ["COMET_MODE"] = "offline"  # 设置离线模式，结束后上传结果
-os.environ["COMET_API_KEY"] = "YnYyHOYRurdu1KdGoAetHJxl4"
+# os.environ["COMET_API_KEY"] = "YnYyHOYRurdu1KdGoAetHJxl4"  # 实时上传结果
 
 # 设置项目名称
 projectName = 'Defect-Detection-exp'
