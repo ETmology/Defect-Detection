@@ -33,7 +33,7 @@
 
 | endTime         | resultPath        | Type | mAP50 | 参数说明                                                     | 备注                                          |
 | --------------- | ----------------- | ---- | ----- | ------------------------------------------------------------ | --------------------------------------------- |
-| 6/4/24 01:16 PM | [val1](runs\val1) | val  | 0.7   | 用测试集对[northern_blackcurrant_9597](Defect-Detection-exp\northern_blackcurrant_9597) 中得到的最佳权重模型 [best.pt](Defect-Detection-exp\northern_blackcurrant_9597\weights\best.pt) 进行测试[^3]。 | 在测试集上的表现并不好…mAP50从0.785降到了0.7😅 |
+| 6/6/24 01:16 PM | [val1](runs\val1) | val  | 0.7   | 用测试集对[northern_blackcurrant_9597](Defect-Detection-exp\northern_blackcurrant_9597) 中得到的最佳权重模型 [best.pt](Defect-Detection-exp\northern_blackcurrant_9597\weights\best.pt) 进行测试[^3]。 | 在测试集上的表现并不好…mAP50从0.785降到了0.7😅 |
 
 ## 超参数调优
 
