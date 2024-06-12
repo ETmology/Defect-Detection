@@ -1,6 +1,6 @@
 task: detect
 mode: train
-model: Defect-Detection-exp/chosen_ayu_1187/weights/best.pt
+model: Defect-Detection-exp/train_2.1.1/weights/best.pt
 data: NEU-DET.yaml
 epochs: 30
 time: null

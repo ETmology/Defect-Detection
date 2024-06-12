@@ -4,7 +4,7 @@ from ultralytics import YOLO
 # 定义测试参数
 def test_model():
     # 加载模型
-    model = YOLO('Defect-Detection-exp/northern_blackcurrant_9597/weights/best.pt')
+    model = YOLO('Defect-Detection-exp/train_3.1/weights/best.pt')
 
     # 测试模型
     model.val(

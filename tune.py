@@ -5,7 +5,7 @@ import yaml
 # 定义训练参数
 def tune_model():
     # 加载模型
-    model = YOLO('Defect-Detection-exp/chosen_ayu_1187/weights/best.pt')
+    model = YOLO('Defect-Detection-exp/train_2.1.1/weights/best.pt')
 
     # 加载超参数
     with open('runs/tune2/tune/best_hyperparameters.yaml', 'r', encoding='utf-8') as f:
