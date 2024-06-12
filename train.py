@@ -19,7 +19,7 @@ def train_model():
     model = YOLO('yolov8n.yaml').load('yolov8n.pt')  # 重新构建
 
     # 加载超参数
-    with open('hyp.yaml', 'r', encoding='utf-8') as f:
+    with open('hyp_modified.yaml', 'r', encoding='utf-8') as f:
         hyp = yaml.safe_load(f)
 
     # 训练模型
@@ -31,7 +31,7 @@ def train_model():
 
         batch=16,  # 批量大小
         epochs=100,  # 训练轮数
-        imgsz=320,  # 输入图像尺寸
+        imgsz=256,  # 输入图像尺寸
 
         # 进行调优后的超参数
         lr0=hyp['lr0'],  # 初始学习率

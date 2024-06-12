@@ -1,0 +1,30 @@
+# 40/100 iterations complete ✅ (7809.26s)
+# Results saved to runs\tune4\tune
+# Best fitness=0.46337 observed at iteration 5
+# Best fitness metrics are {'metrics/precision(B)': 0.7098, 'metrics/recall(B)': 0.68591, 'metrics/mAP50(B)': 0.74368, 'metrics/mAP50-95(B)': 0.43222, 'val/box_loss': 0.90178, 'val/cls_loss': 0.69819, 'val/dfl_loss': 1.79972, 'fitness': 0.46337}
+# Best fitness model is runs\tune4\train5
+# Best fitness hyperparameters are printed below.
+
+lr0: 0.00353
+lrf: 0.00631
+momentum: 0.94026
+weight_decay: 0.00049
+warmup_epochs: 3.17785
+warmup_momentum: 0.71103
+box: 4.64344
+cls: 0.27979
+dfl: 1.85023
+hsv_h: 0.01395
+hsv_s: 0.43613
+hsv_v: 0.34253
+degrees: 0.0
+translate: 0.07067
+scale: 0.45859
+shear: 0.0
+perspective: 0.0
+flipud: 0.44577
+fliplr: 0.31616
+bgr: 0.0
+mosaic: 0.84742
+mixup: 0.41153
+copy_paste: 0.0
