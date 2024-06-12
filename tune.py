@@ -26,7 +26,7 @@ def tune_model():
         data='NEU-DET.yaml',  # 数据集的yaml文件
         project=projectName,
         device='0',  # 使用的GPU设备编号
-        iterations=50,
+        iterations=80,
         optimizer="AdamW",
         # plots=False,
         # save=False,
