@@ -1,12 +1,12 @@
-from ultralytics import YOLO
+import os
 import comet_ml
 import yaml
-import os
+from ultralytics import YOLO
 
 os.environ["COMET_API_KEY"] = "YnYyHOYRurdu1KdGoAetHJxl4"  # 实时上传结果
 
 # 设置项目名称
-projectName = 'Defect-Detection-exp'
+projectName = 'Defect-Detection-exp/tune6'
 
 
 # 定义训练参数
@@ -18,7 +18,7 @@ def tune_model():
     model = YOLO('yolov8n.yaml').load('yolov8n.pt')  # 重新构建
 
     # 加载超参数
-    with open('runs/tune4/tune/best_hyperparameters.yaml', 'r', encoding='utf-8') as f:
+    with open('Defect-Detection-exp/tune6/tune2/best_hyperparameters.yaml', 'r', encoding='utf-8') as f:
         hyp = yaml.safe_load(f)
 
     # 模型调优
@@ -26,17 +26,17 @@ def tune_model():
         data='NEU-DET.yaml',  # 数据集的yaml文件
         project=projectName,
         device='0',  # 使用的GPU设备编号
-        iterations=80,
+        iterations=50,
         optimizer="AdamW",
-        # plots=False,
-        # save=False,
+        plots=False,
+        save=False,
         # val=False,
 
         save_json=True,  # 是否保存JSON格式的结果
 
         batch=16,  # 批量大小
         epochs=100,  # 训练轮数
-        imgsz=256,  # 输入图像尺寸
+        imgsz=320,  # 输入图像尺寸
 
         # 进行调优后的超参数
         lr0=hyp['lr0'],

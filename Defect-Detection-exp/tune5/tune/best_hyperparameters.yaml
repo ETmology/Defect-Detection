@@ -1,0 +1,30 @@
+# 3/80 iterations complete ✅ (2209.39s)
+# Results saved to Defect-Detection-exp\tune
+# Best fitness=0.41497 observed at iteration 2
+# Best fitness metrics are {'metrics/precision(B)': 0.64083, 'metrics/recall(B)': 0.65956, 'metrics/mAP50(B)': 0.70189, 'metrics/mAP50-95(B)': 0.38309, 'val/box_loss': 0.9247, 'val/cls_loss': 0.78433, 'val/dfl_loss': 2.06116, 'fitness': 0.41497}
+# Best fitness model is Defect-Detection-exp\train3
+# Best fitness hyperparameters are printed below.
+
+lr0: 0.00353
+lrf: 0.00633
+momentum: 0.94026
+weight_decay: 0.00051
+warmup_epochs: 3.12279
+warmup_momentum: 0.69689
+box: 4.45501
+cls: 0.2816
+dfl: 1.85726
+hsv_h: 0.01398
+hsv_s: 0.42202
+hsv_v: 0.33112
+degrees: 0.0
+translate: 0.07155
+scale: 0.45452
+shear: 0.0
+perspective: 0.0
+flipud: 0.4397
+fliplr: 0.31616
+bgr: 0.0
+mosaic: 0.85755
+mixup: 0.41153
+copy_paste: 0.0

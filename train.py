@@ -16,7 +16,7 @@ def train_model():
     comet_ml.init(project_name=projectName)
 
     # 加载模型
-    model = YOLO('yolov8n.yaml').load('yolov8n.pt')  # 重新构建
+    model = YOLO('yolov8n.yaml').load('yolov8n.pt')  # 从 YAML 构建并传输权重
 
     # 加载超参数
     with open('hyp_modified.yaml', 'r', encoding='utf-8') as f:
@@ -31,7 +31,7 @@ def train_model():
 
         batch=16,  # 批量大小
         epochs=100,  # 训练轮数
-        imgsz=256,  # 输入图像尺寸
+        imgsz=320,  # 输入图像尺寸
 
         # 进行调优后的超参数
         lr0=hyp['lr0'],  # 初始学习率
