@@ -10,44 +10,6 @@
 >
 > Comet设置成离线模式时，每次train结束后，先在终端设置API `set COMET_API_KEY=YnYyHOYRurdu1KdGoAetHJxl4`，再按照提示上传本地`.cometml-runs`中的文件即可。**此实验记录已设置为公开，在[此处](https://www.comet.com/etmology/defect-detection-exp/view/new/panels)可查看实验参数、指标、输出、设备信息等。**
 
-# 实验记录
-
-## 训练
-
-> [!note]
->
-> 此处只写简要记录，具体见 [Defect-Detection-exp](Defect-Detection-exp) 中的可视化输出及[Comet的记录](https://www.comet.com/etmology/defect-detection-exp/view/new/panels)。YOLOv8的validation过程会在train中一同进行
-
-| Type  | endTime          | resultPath[^2]                                      | mAP50 | Parameters | 参数说明                                                     | 备注                                                         |
-| ----- | ---------------- | --------------------------------------------------- | ----- | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| train | 6/4/24 11:19 AM  | [train_1.1](Defect-Detection-exp/train_1.1)         | 0.767 | 3012018    | 采用原始`yolov8n.pt`及原始超参数。                           | -                                                            |
-| train | 6/4/24 03:37 PM  | [train_1.2](Defect-Detection-exp/train_1.2)         | 0.747 | 11137922   | 采用原始`yolov8s.pt`及原始超参数。                           | 其参数量更多，耗时长，占用GPU内存翻倍（2g->4g），但是mAP50的并没有得到提升。 |
-| train | 6/4/24 09:38 PM  | [train_2.1](Defect-Detection-exp/train_2.1)         | 0.776 | 3012018    | 原始`yolov8n.pt`的基础上采用 [tune1](runs/tune1) 的超参数调优结果。 | mAP50获得了一定的提升，较[train_1.1](Defect-Detection-exp/train_1.1)增长了0.009，但存在轻微的过拟合问题。 |
-| train | 6/6/24 07:22 AM  | [train_2.2](Defect-Detection-exp/train_2.2)         | 0.769 | 3012018    | [tune2](runs/tune2)调优过程得到的[最佳权重](runs/tune2/tune/weights/best.pt) 和[最佳超参数组合](runs/tune2/tune/best_hyperparameters.yaml) 上继续训练。 | 在第114个Epoch时触发了early stopping，mAP50未提高，loss的收敛情况变差，存在严重的过拟合问题。 |
-| train | 6/6/24 08:30 AM  | [train_2.3](Defect-Detection-exp/train_2.3)         | 0.774 | 3012018    | [tune2](runs/tune2)调优过程得到的[最佳超参数组合](runs/tune2/tune/best_hyperparameters.yaml) 和[train_2.1](Defect-Detection-exp/train_2.1)得到的[最佳权重](Defect-Detection-exp/train_2.1/weights/best.pt) 上继续训练。 | 相当于运用“早停法”，仍然存在过拟合问题。                     |
-| train | 6/6/24 09:09 AM  | [train_2.1.1](Defect-Detection-exp/train_2.1.1)     | 0.782 | 3012018    | [train_2.1](Defect-Detection-exp/train_2.1)的基础上epoch减小至100。 | 过拟合问题得到缓解，训练时长缩短，模型也回到更加轻量的水平。 |
-| train | 6/6/24 09:39 AM  | [train_2.1.1.1](Defect-Detection-exp/train_2.1.1.1) | 0.785 | 3012018    | [train_2.1.1](Defect-Detection-exp/train_2.1.1) 的基础上batch增大至24。 | 出现略微过拟合。                                             |
-| train | 6/6/24 01:08 PM  | [train_3.1](Defect-Detection-exp/train_3.1)         | 0.785 | 3012018    | 采用[tune3](runs/tune3)得到的[最佳超参数组合](runs/tune3/tune/best_hyperparameters.yaml) 对原始`yolov8n.pt`训练100个epoch。 | 略微过拟合，波动幅度仍然较大。                               |
-| train | 6/12/24 03:30 PM | [train_3.2](Defect-Detection-exp/train_3.2)         | 0.777 | 3012018    | 采用[tune3](runs/tune3)得到的[最佳超参数组合](runs/tune3/tune/best_hyperparameters.yaml) 的基础上微调过的[hyp.yaml](hyp_modified.yaml)（增加`flipud`）进行训练，调整图像尺寸为`320`，增加数据增强选项。 | 过拟合问题得到缓解，训练速度变快，但是训练过程loss曲线波动增大，需要对新增加数据增强参数进行调优。💡同时可以发现`rolled-in_scale`类别的检测效果有所改善。 |
-| train | 6/12/24 04:50 PM | [train_3.3](Defect-Detection-exp/train_3.3)         | 0.708 | 3012018    | 在[train_3.2](Defect-Detection-exp/train_3.2)的基础上增加更多数据增强选项，如`degrees`、`mixup`… | 精度波动过大，mAP50下降。                                    |
-| train | 6/12/24 05:12 PM | [train_3.4](Defect-Detection-exp/train_3.4)         | 0.735 | 3012018    | 在[train_3.3](Defect-Detection-exp/train_3.3)的基础上关闭`degrees`增强选项，图像尺寸减小为`256`（排除图像噪声干扰）。 | 精度波动仍然较大。但是考虑到`mixup`选项与test数据集的特性一致，在本次调优中予以保留。 |
-
-
-## 超参数调优
-
-| Type | endTime          | resultPath          | 备注                                                         |
-| ---- | ---------------- | ------------------- | ------------------------------------------------------------ |
-| tune | 6/4/24 08:41 PM  | [tune1](runs/tune1) | 对原始`yolov8n.pt`超参数进行调优，`epoch=30`，实际迭代39轮。 |
-| tune | 6/6/24 03:34 AM  | [tune2](runs/tune2) | 在[train_2.1](Defect-Detection-exp/train_2.1)训练完成后得到的 [best.pt](Defect-Detection-exp/train_2.1/weights/best.pt) 上进行进一步调优，`epoch=100`[^4]，`iteration=30`。 |
-| tune | 6/6/24 12:34 AM  | [tune3](runs/tune3) | 对[train_2.1.1](Defect-Detection-exp/train_2.1.1) 的最佳权重 [best.pt](Defect-Detection-exp/train_2.1.1/weights/best.pt) 超参数进行进一步调优，`epoch=30`，实际迭代25轮，以减小损失函数的波动。 |
-| tune | 6/12/24 19:29 PM | [tune4](runs/tune4) | 对[train_3.4](Defect-Detection-exp/train_3.4)的最佳权重 [best.pt](Defect-Detection-exp/train_3.4/weights/best.pt) 及微调后的超参数[hyp.yaml](hyp_modified.yaml)进行进一步调优，`epoch=30`，实际迭代40轮（持续下降…手动停止了😅） |
-
-## 测试
-
-| Type | endTime         | resultPath        | mAP50 | 参数说明                                                     | 备注                                          |
-| ---- | --------------- | ----------------- | ----- | ------------------------------------------------------------ | --------------------------------------------- |
-| val  | 6/6/24 01:16 PM | [val1](runs/val1) | 0.7   | 用测试集对[train_3.1](Defect-Detection-exp/train_3.1) 中得到的最佳权重模型 [best.pt](Defect-Detection-exp/train_3.1/weights/best.pt) 进行测试[^3]。 | 在测试集上的表现并不好…mAP50从0.785降到了0.7😅 |
-
 # 数据集及其处理
 
 ## 原始数据集：[NEU-DET](NEU-DET) 
@@ -82,6 +44,46 @@ NEU-DET数据库包含了大量的灰度图像数据，其中每种缺陷类型�
 | [random_split.py](data_processing/random_split.py)           | 对1500张训练集随机分割成1200张训练集+300张验证集             |
 | [draw_xml_boxes.py](data_processing/draw_xml_boxes.py)       | 根据原始xml文件绘制检测框进行预览，结果在 [draw_xml_boxes](draw_xml_boxes) （没什么用） |
 | [view_category_xml.py](data_processing/view_category_xml.py) | 预览xml中包含的类别数量信息（没什么用）                      |
+
+# 实验记录
+
+## 训练
+
+> [!note]
+>
+> 此处只写简要记录，具体见 [Defect-Detection-exp](Defect-Detection-exp) 中的可视化输出及[Comet的记录](https://www.comet.com/etmology/defect-detection-exp/view/new/panels)。YOLOv8的validation过程会在train中一同进行
+
+| Type  | endTime          | resultPath[^2]                                      | mAP50 | Parameters | 参数说明                                                     | 备注                                                         |
+| ----- | ---------------- | --------------------------------------------------- | ----- | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| train | 6/4/24 11:19 AM  | [train_1.1](Defect-Detection-exp/train_1.1)         | 0.767 | 3012018    | 采用原始`yolov8n.pt`及原始超参数。                           | -                                                            |
+| train | 6/4/24 03:37 PM  | [train_1.2](Defect-Detection-exp/train_1.2)         | 0.747 | 11137922   | 采用原始`yolov8s.pt`及原始超参数。                           | 其参数量更多，耗时长，占用GPU内存翻倍（2g->4g），但是mAP50的并没有得到提升。 |
+| train | 6/4/24 09:38 PM  | [train_2.1](Defect-Detection-exp/train_2.1)         | 0.776 | 3012018    | 原始`yolov8n.pt`的基础上采用 [tune1](runs/tune1) 的超参数调优结果。 | mAP50获得了一定的提升，较[train_1.1](Defect-Detection-exp/train_1.1)增长了0.009，但存在轻微的过拟合问题。 |
+| train | 6/6/24 07:22 AM  | [train_2.2](Defect-Detection-exp/train_2.2)         | 0.769 | 3012018    | [tune2](runs/tune2)调优过程得到的[最佳权重](runs/tune2/tune/weights/best.pt) 和[最佳超参数组合](runs/tune2/tune/best_hyperparameters.yaml) 上继续训练。 | 在第114个Epoch时触发了early stopping，mAP50未提高，loss的收敛情况变差，存在严重的过拟合问题。 |
+| train | 6/6/24 08:30 AM  | [train_2.3](Defect-Detection-exp/train_2.3)         | 0.774 | 3012018    | [tune2](runs/tune2)调优过程得到的[最佳超参数组合](runs/tune2/tune/best_hyperparameters.yaml) 和[train_2.1](Defect-Detection-exp/train_2.1)得到的[最佳权重](Defect-Detection-exp/train_2.1/weights/best.pt) 上继续训练。 | 相当于运用“早停法”，仍然存在过拟合问题。                     |
+| train | 6/6/24 09:09 AM  | [train_2.1.1](Defect-Detection-exp/train_2.1.1)     | 0.782 | 3012018    | [train_2.1](Defect-Detection-exp/train_2.1)的基础上epoch减小至100。 | 过拟合问题得到缓解，训练时长缩短，模型也回到更加轻量的水平。 |
+| train | 6/6/24 09:39 AM  | [train_2.1.1.1](Defect-Detection-exp/train_2.1.1.1) | 0.785 | 3012018    | [train_2.1.1](Defect-Detection-exp/train_2.1.1) 的基础上batch增大至24。 | 出现略微过拟合。                                             |
+| train | 6/6/24 01:08 PM  | [train_3.1](Defect-Detection-exp/train_3.1)         | 0.785 | 3012018    | 采用[tune3](runs/tune3)得到的[最佳超参数组合](runs/tune3/tune/best_hyperparameters.yaml) 对原始`yolov8n.pt`训练100个epoch。 | 略微过拟合，波动幅度仍然较大。                               |
+| train | 6/12/24 03:30 PM | [train_3.2](Defect-Detection-exp/train_3.2)         | 0.777 | 3012018    | 采用[tune3](runs/tune3)得到的[最佳超参数组合](runs/tune3/tune/best_hyperparameters.yaml) 的基础上微调过的[hyp.yaml](hyp_modified.yaml)（增加`flipud=0.5`）进行训练，调整图像尺寸为`320`。 | 过拟合问题得到缓解，训练速度变快，但是训练过程loss曲线波动增大，需要对新增加数据增强参数进行调优。💡同时可以发现`rolled-in_scale`类别的检测效果有所改善。 |
+| train | 6/12/24 04:50 PM | [train_3.3](Defect-Detection-exp/train_3.3)         | 0.708 | 3012018    | 在[train_3.2](Defect-Detection-exp/train_3.2)的基础上增加更多数据增强选项，如`degrees`、`mixup`… | 精度波动过大，mAP50下降。                                    |
+| train | 6/12/24 05:12 PM | [train_3.4](Defect-Detection-exp/train_3.4)         | 0.735 | 3012018    | 在[train_3.3](Defect-Detection-exp/train_3.3)的基础上关闭`degrees`增强选项，图像尺寸减小为`256`（排除图像噪声干扰）。 | 精度波动仍然较大。但是考虑到`mixup`选项与test数据集的特性一致，在本次调优中予以保留。 |
+
+
+## 超参数调优
+
+| Type | endTime          | resultPath                          | 备注                                                         |
+| ---- | ---------------- | ----------------------------------- | ------------------------------------------------------------ |
+| tune | 6/4/24 08:41 PM  | [tune1](runs/tune1)                 | 对原始`yolov8n.pt`超参数进行调优，`epoch=30`，实际迭代39轮。 |
+| tune | 6/6/24 03:34 AM  | [tune2](runs/tune2)                 | 在[train_2.1](Defect-Detection-exp/train_2.1)训练完成后得到的 [best.pt](Defect-Detection-exp/train_2.1/weights/best.pt) 上进行进一步调优，`epoch=100`[^4]，`iteration=30`。 |
+| tune | 6/6/24 12:34 AM  | [tune3](runs/tune3)                 | 对[train_2.1.1](Defect-Detection-exp/train_2.1.1) 的最佳权重 [best.pt](Defect-Detection-exp/train_2.1.1/weights/best.pt) 超参数进行进一步调优，`epoch=30`，实际迭代25轮，以减小损失函数的波动。 |
+| tune | 6/12/24 07:29 PM | [tune4](runs/tune4)                 | 对[train_3.4](Defect-Detection-exp/train_3.4)的最佳权重 [best.pt](Defect-Detection-exp/train_3.4/weights/best.pt) 及微调后的超参数[hyp.yaml](hyp_modified.yaml)进行进一步调优，`epoch=30`，实际迭代40轮（持续下降…手动停止了😅） |
+| tune | 6/12/24 08:29 PM | [tune5](runs/tune5)                 | 对原始`yolov8n.pt`及[tune4](runs/tune4)获得的[最佳超参数组合](runs/tune4/tune/best_hyperparameters.yaml)进行进一步调优，`epoch=100`，实际迭代3轮（对完整训练过程进行多次调优，效果不佳手动停止） |
+| tune | 6/12/24 10:00 PM | [tune6](Defect-Detection-exp/tune6) | 对原始`yolov8n.pt`及[train_3.2](Defect-Detection-exp/train_3.2)的实验过程进行总体的进一步调优，`epoch=100`。此调优过程见[comet_ml的defect-detection-exp-tune6](https://www.comet.com/etmology/defect-detection-exp-tune6/view/new/panels)。 |
+
+## 测试
+
+| Type | endTime         | resultPath        | mAP50 | 参数说明                                                     | 备注                                          |
+| ---- | --------------- | ----------------- | ----- | ------------------------------------------------------------ | --------------------------------------------- |
+| val  | 6/6/24 01:16 PM | [val1](runs/val1) | 0.7   | 用测试集对[train_3.1](Defect-Detection-exp/train_3.1) 中得到的最佳权重模型 [best.pt](Defect-Detection-exp/train_3.1/weights/best.pt) 进行测试[^3]。 | 在测试集上的表现并不好…mAP50从0.785降到了0.7😅 |
 
 # 相关文档
 
