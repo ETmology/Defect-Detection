@@ -1,24 +1,23 @@
 from ultralytics import YOLO
 
+project_name = "Defect-Detection-exp/train_3.2.3"
+
 
 # 定义测试参数
 def test_model():
     # 加载模型
-    model = YOLO('Defect-Detection-exp/train_3.1/weights/best.pt')
+    model = YOLO(f'{project_name}/weights/best.pt')
 
     # 测试模型
     model.val(
         data='NEU-DET.yaml',  # 数据集的yaml文件
         split='test',  # 分割出测试集
         device='0',  # 使用的GPU设备编号
-        project="runs/val",  # 修改项目名称
+        project=project_name,
+        imgsz=320,
 
         save_json=True,  # 是否保存JSON格式的结果
-
-        batch=16,  # 批量大小
-        imgsz=640,  # 输入图像尺寸
-
-        conf=0.25
+        conf=0.25  # 信心阈值
     )
 
 

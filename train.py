@@ -19,7 +19,7 @@ def train_model():
     model = YOLO('yolov8n.yaml').load('yolov8n.pt')  # 从 YAML 构建并传输权重
 
     # 加载超参数
-    with open('hyp_modified.yaml', 'r', encoding='utf-8') as f:
+    with open('Defect-Detection-exp/tune6/tune3/best_hyperparameters.yaml', 'r', encoding='utf-8') as f:
         hyp = yaml.safe_load(f)
 
     # 训练模型
@@ -30,7 +30,7 @@ def train_model():
         save_json=True,  # 是否保存JSON格式的结果
 
         batch=16,  # 批量大小
-        epochs=100,  # 训练轮数
+        epochs=150,  # 训练轮数
         imgsz=320,  # 输入图像尺寸
 
         # 进行调优后的超参数

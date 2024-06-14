@@ -1,30 +1,30 @@
-# 24/50 iterations complete ✅ (19627.31s)
+# 41/50 iterations complete ✅ (32901.54s)
 # Results saved to Defect-Detection-exp\tune6\tune3
-# Best fitness=0.44215 observed at iteration 9
-# Best fitness metrics are {'metrics/precision(B)': 0.62089, 'metrics/recall(B)': 0.70431, 'metrics/mAP50(B)': 0.73316, 'metrics/mAP50-95(B)': 0.40982, 'val/box_loss': 0.66934, 'val/cls_loss': 1.00127, 'val/dfl_loss': 1.88902, 'fitness': 0.44215}
-# Best fitness model is Defect-Detection-exp\tune6\train18
+# Best fitness=0.44293 observed at iteration 29
+# Best fitness metrics are {'metrics/precision(B)': 0.72456, 'metrics/recall(B)': 0.65233, 'metrics/mAP50(B)': 0.73416, 'metrics/mAP50-95(B)': 0.41058, 'val/box_loss': 0.60902, 'val/cls_loss': 0.89349, 'val/dfl_loss': 1.67802, 'fitness': 0.44293}
+# Best fitness model is Defect-Detection-exp\tune6\train38
 # Best fitness hyperparameters are printed below.
 
-lr0: 0.00336
-lrf: 0.00512
-momentum: 0.95578
-weight_decay: 0.00046
-warmup_epochs: 2.58506
-warmup_momentum: 0.75679
-box: 3.30905
-cls: 0.38276
-dfl: 1.60441
-hsv_h: 0.0122
-hsv_s: 0.35948
-hsv_v: 0.21478
+lr0: 0.00333
+lrf: 0.00471
+momentum: 0.93735
+weight_decay: 0.00044
+warmup_epochs: 2.75061
+warmup_momentum: 0.76716
+box: 3.01725
+cls: 0.34769
+dfl: 1.4611
+hsv_h: 0.01248
+hsv_s: 0.36973
+hsv_v: 0.21074
 degrees: 0.0
-translate: 0.0765
-scale: 0.4995
+translate: 0.07653
+scale: 0.4937
 shear: 0.0
 perspective: 0.0
-flipud: 0.58619
-fliplr: 0.32459
+flipud: 0.56142
+fliplr: 0.30117
 bgr: 0.0
-mosaic: 0.90357
+mosaic: 1.0
 mixup: 0.0
 copy_paste: 0.0
